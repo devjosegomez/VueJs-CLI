@@ -1,13 +1,17 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <Navbar />
     <h1>{{name}}, {{ msg }}</h1>
     
   </div>
 </template>
 
 <script>
+import Navbar from "./Navbar"
 export default {
+  components: {
+    Navbar: Navbar
+  },
   name: 'app',
   data () {
     return {
