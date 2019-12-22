@@ -2,22 +2,29 @@
   <div id="app">
     <Navbar />
     <h1>{{name}}, {{ msg }}</h1>
+    <!--
     <AllFriends :friends="friends" @delete="deleteFriend" />
     <FriendsOnline :friends="friends"/>
-    
+    -->
+    <Blogs/>  
+
+
   </div>
 </template>
 
 <script>
 import Navbar from "./Navbar"
-import AllFriends from "./AllFriends"
-import FriendsOnline from "./FriendsOnline"
+import Blogs from "./Blogs"
+
+//import AllFriends from "./AllFriends"
+//import FriendsOnline from "./FriendsOnline"
 
 export default {
   components: {
     Navbar: Navbar,
-    AllFriends: AllFriends,
-    FriendsOnline: FriendsOnline
+    Blogs : Blogs
+    //AllFriends: AllFriends,
+    //FriendsOnline: FriendsOnline
   },
   name: 'app',
   data () {
