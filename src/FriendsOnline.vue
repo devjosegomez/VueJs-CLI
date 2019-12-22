@@ -1,15 +1,15 @@
 <template>
-    <div id="all-friends">
-        <h2>All friends</h2>
+    <div id="friends-online">
+        <h2>Friends online</h2>
         <div v-for="(friend, i) in friends" :key="i">
-            <span>{{ friend.name }}</span>
+            <span v-if="friend.online">{{ friend.name }}</span>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    name: "AllFriends",
+    name: "FriendsOnline",
     props: ["friends"],
     data(){
         return{
