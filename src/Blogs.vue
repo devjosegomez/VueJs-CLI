@@ -2,7 +2,9 @@
     <div class="blogs">
         <h2>{{ blogTitle }}</h2>
         <button @click="changeTitle">Change blog's title </button>
-        <div v-for="post in posts" :key="post.id">
+        <input type="text" v-model="searchTerm">
+        <span v-if="filteredPosts.length > 0"># posts found: {{filteredPosts.length}}</span>
+        <div v-for="post in filteredPosts" :key="post.id">
             <h2>{{ post.title }}</h2>
             <p><q>{{ post.body }}</q></p>
         </div>
@@ -16,7 +18,9 @@ export default {
     data(){
         return {
             blogTitle: "Blogs",
-            posts: []
+            posts: [],
+            searchTerm:"",
+            resultsFound: ""
         }
     },
     methods:{
@@ -24,6 +28,14 @@ export default {
             this.blogTitle = "beforeUpdate Blogs"
         }
     },
+    computed: {
+        filteredPosts(){
+            return this.posts.filter(post =>{
+                return post.title.match(this.searchTerm)
+            })
+        }
+    }
+    ,
     created(){
         axios.get("https://jsonplaceholder.typicode.com/posts/")
         .then(response => {
